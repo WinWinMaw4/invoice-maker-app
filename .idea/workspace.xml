@@ -2,11 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4823774d-fdd4-4343-a163-0ce8edccbdd1" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/public/icons8-shop-16.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/Row.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/deploy.sh" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/App.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Row.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Row.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vue.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/vue.config.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -45,6 +45,9 @@
       <recent name="C:\Users\winwinmaw\Desktop\vue-invoice-app\src\assets" />
       <recent name="C:\Users\winwinmaw\Desktop\vue-invoice-app\public" />
     </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\winwinmaw\Desktop\vue-invoice-app\src\assets\images" />
+    </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -66,7 +69,14 @@
       <workItem from="1649064390122" duration="2184000" />
       <workItem from="1649075190907" duration="3160000" />
       <workItem from="1649084775709" duration="424000" />
-      <workItem from="1649133201573" duration="5971000" />
+      <workItem from="1649133201573" duration="6097000" />
+      <workItem from="1649180073384" duration="20000" />
+      <workItem from="1649185438417" duration="710000" />
+      <workItem from="1649223349868" duration="594000" />
+      <workItem from="1649252432618" duration="47000" />
+      <workItem from="1649255740410" duration="582000" />
+      <workItem from="1649311896559" duration="14205000" />
+      <workItem from="1649353735196" duration="12468000" />
     </task>
     <servers />
   </component>
@@ -84,22 +94,6 @@
       </map>
     </option>
     <option name="oldMeFiltersMigrated" value="true" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/src/App.vue</url>
-          <line>226</line>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/src/App.vue</url>
-          <line>4</line>
-          <option name="timeStamp" value="2" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
   <component name="XPathView.XPathProjectComponent">
     <history />

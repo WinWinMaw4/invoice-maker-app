@@ -1,9 +1,10 @@
 <template>
-  <tr class="animate__animated animate__fadeInDown" >
+  <tr :class="['animate__animated','created',{'deleted':isDel}]" >
     <td class="text-center">
       <input type="hidden" :value="record.id">
       <span class="show-in-print">{{ index+1 }}</span>
-      <i  @click="$emit('toDel',record.id)" class="fa-solid fa-trash-alt text-danger hide-in-print"></i>
+<!--      $emit('toDel',record.id)-->
+      <i  @click="[isDel = true,$emit('toDel',record.id)]" class="fa-solid fa-trash-alt text-danger hide-in-print del-btn"></i>
     </td>
     <td>{{ record.service.name }}</td>
     <td class="text-end quantity-width" @dblclick="quantityEdit=true">
@@ -25,11 +26,14 @@ export default {
     },
     index:{
       type:Number,
-    }
+    },
+
   },
   data() {
     return {
       quantityEdit: false,
+      isDel:false,
+      deleted:'deleted'
     }
   },
   methods: {
@@ -51,4 +55,22 @@ export default {
   unitPrice-width{
     width: 100px;
   }
+  .text-danger{
+    color: hotpink !important;
+  }
+  .del-btn{
+    cursor: pointer;
+    transition: .4s;
+  }
+  .del-btn:hover{
+    text-shadow: 1px 1px 5px #ff002c;
+    transform: rotate(10deg);
+  }
+  .created{
+    animation: .5s fadeInDown;
+  }
+  .deleted{
+    animation: .5s slideOutRight;
+  }
+
 </style>

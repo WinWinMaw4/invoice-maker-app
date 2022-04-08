@@ -8,7 +8,7 @@
           </figure>
 
             <h3 class="d-flex justify-content-center align-items-center mb-3 text-primary">
-              Invoice Maker
+              <span style="text-shadow:0px 3px 3px white ">Invoice Maker</span>
               <a href="" target="_blank" class="hide-in-print ms-2">
                 <i class="fa fa-file-circle-plus"></i>
               </a>
@@ -19,7 +19,7 @@
                </div>
             </div>
 
-          <div class="row align-items-center text-black-50 fw-light my-2 my-md-4">
+          <div class="row align-items-center text-light fw-light my-2 my-md-4">
             <div class="col-12 col-md-4 mb-2">
               <span class="d-inline-block">Invoice No : </span>
               <span class="ms-2">{{invoiceId}}</span>
@@ -37,9 +37,9 @@
           <form class="hide-in-print" action="" @submit.prevent="saveRecord">
             <div class="row g-2">
               <div class="col-6">
-                <select v-model="selectedService" class="form-select">
+                <select v-model="selectedService" class="form-select ">
                   <option value="" >Select Service</option>
-                  <option v-for="service in services" :value="service.id" :key="service.id">
+                  <option v-for="service in services" :value="service.id" :key="service.id" class="op">
                     {{ service.name }}(${{service.price}})
                   </option>
                 </select>
@@ -56,7 +56,7 @@
           </form>
 
           <div class="row">
-            <div class="col-12 table-responsive">
+            <div class="col-12 table-responsive scroll-style">
               <table class="table table-bordered align-middle  mt-3 overflow-auto">
                 <thead class="table-primary align-middle">
                 <tr class="text-center">
@@ -85,33 +85,33 @@
             </div>
           </div>
 
-
           <div class="row g-2 justify-content-end">
             <div class="col-8 col-md-6 col-lg-6">
-              <table class="table table-borderless table-sm ">
+              <table class="table table-borderless table-sm">
                 <tbody class="align-middle">
                 <tr class="">
-                  <th class="fw-normal text-black-50" style="width: 150px;">Net Amount : </th>
-                  <td class="px-3 py-1">{{total}}</td>
+                  <th class="fw-normal" style="width: 150px;">Net Amount : </th>
+                  <td class="px-3 py-1 ">{{total}}</td>
                 </tr>
                 <tr>
-                  <th class="fw-normal text-black-50">Receipt Amount : </th>
-                  <td>
-                    <input type="number" v-model="inputReceiptAmount" @keydown="needAmount" class="form-control w-100" placeholder="" min="1" >
+                  <th class="fw-normal">Receipt Amount : </th>
+                  <td class="text-end" style="width: fit-content">
+                    <input type="number" v-model="inputReceiptAmount" @change="needAmount" class="form-control d-block w-100" style="width: fit-content;" placeholder="" min="1" >
                   </td>
                 </tr>
                 <tr>
-                  <th class="fw-normal text-black-50">Refund Amount : </th>
-                  <td :class="[{errorColor:needPrice},'p-3','py-1']">{{ refundAmount }}<i :class="[{displayShow:needPrice}]" class="fa fa-circle-exclamation ms-1 d-none"></i></td>
+                  <th class="fw-normal " >Refund Amount : </th>
+                  <td :class="[{errorColor:needPrice},'p-3 py-1']">{{ refundAmount }} <span :class="[(needPrice==true) ? 'd-inline-block':'d-none','ms-1']">need money<i  class="fa fa-circle-exclamation" ></i></span></td>
                 </tr>
                 </tbody>
               </table>
             </div>
           </div>
 
-
-
-         <div class="position-absolute border p-3 rounded hide-in-print bg-white w-100" style="bottom: 10px">
+          <div class="text-center show-in-print text-primary small p-3 position-absolute" style="bottom: 10%" >
+            Invoice Maker မှဝယ်ယူအားပေးမှုအတွက်လှိုက်လှဲစွာကျေးဇူးတင်ရှိပါသည်
+          </div>
+         <div class="position-absolute border p-3 rounded hide-in-print w-100" style="bottom: 10px">
            <div class="row">
              <div class="col-6 visually-hidden">
                <input v-model="invoiceNumber" class="form-control">
@@ -172,9 +172,9 @@ export default {
       ],
       recordStart : 1,
       records : [],
-      needPrice : false,
+      needPrice : false ,
       errorColor : 'errorColor',
-      displayShow : "displayShow",
+      isDel:false,
 
     }
   },
@@ -183,7 +183,7 @@ export default {
       let months = ["January","February","March","April","May","June","July","August","September","October","November","December"];
 
       let d = new Date();
-      let dateCode = d.getDate()+" "+months[(d.getMonth()+1)]+" "+d.getFullYear()+","+d.getHours()+":"+d.getMinutes();
+      let dateCode = d.getDate()+" "+months[(d.getMonth()+1)]+" "+d.getFullYear()+", "+d.getHours()+":"+d.getMinutes();
       return dateCode;
     },
     invoiceNumber() {
@@ -197,8 +197,9 @@ export default {
       return this.records.reduce((pv,cv)=>pv+cv.cost,0);
     },
     refundAmount(){
-      let total = this.records.reduce((pv,cv)=>pv+cv.cost,0);
-      let refund = Math.floor((total - this.inputReceiptAmount) * 100)/100;
+      // let total = this.records.reduce((pv,cv)=>pv+cv.cost,0);
+      let total = this.total;
+      let refund = Math.abs(Math.floor((total - this.inputReceiptAmount) * 100)/100);
       return refund;
     },
 
@@ -220,7 +221,7 @@ export default {
     del(recordId){
       // recordId
       console.log("listen event from child component")
-      this.records = this.records.filter(record => record.id != recordId);
+      setTimeout(()=>this.records = this.records.filter(record => record.id != recordId),700)
       console.log(recordId)
     },
 
@@ -228,8 +229,9 @@ export default {
       print();
     },
     needAmount(){
-      let total = this.records.reduce((pv,cv)=>pv+cv.cost,0);
+      // let total = this.records.reduce((pv,cv)=>pv+cv.cost,0);
       // let refund = total - this.inputReceiptAmount;
+      let total = this.total;
       if(total > this.inputReceiptAmount){
         this.needPrice = true;
         return true;
@@ -247,6 +249,9 @@ export default {
 @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;700&display=swap');
 $font-family-sans-serif : 'Oswald', sans-serif;
 $primary: #810fc7;
+$form-select-indicator-color:       $primary;
+$table-color:                 #b330ff;
+//--bs-table-bg: #e6cff4;
 
 @import "~bootstrap/scss/bootstrap";
 //@import "~bootstrap/dist/css/bootstrap.min.css";
@@ -254,15 +259,85 @@ $primary: #810fc7;
 @import "~animate.css/animate.min.css";
 
 @media screen {
+  body{
+    background-color: #ce9bf5;
+    background-image: url("./assets/images/Pink Purple Pink Purple Pink Purple Gradient Background.jpg");
+    background-position: bottom;
+    background-size: cover;
+    //background-image: url("./assets/images/—Pngtree—abstract gradient wave with 3d_3642786.png");
+    //background-position: center;
+    //background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    backdrop-filter: blur(5px);
+  }
+  img, svg {
+    vertical-align: middle;
+    filter: drop-shadow(0px 3px 3px white);
+  }
+  .table-primary{
+    --bs-table-bg: #b330ff;
+  }
+  .form-select {
+    color: #ffffff;
+    background-color: #b330ff82;
+  }
+  .form-select>option:hover{
+    background: #b330ff82;
+  }
+  .form-control{
+    color: #ffffff;
+    background-color: #a445ed;
+  }
+  .form-control:focus {
+    color: #ffffff;
+    background-color: #b330ff;
+    border-color: #c087e3;
+    outline: 0;
+    box-shadow: 0 0 0 0.25rem rgb(129 15 199 / 25%);
+  }
+  .form-select>option:checked,
+  .form-select>option:hover {
+    background-color:#b330ff  ;
+    box-shadow: 0 0 10px 100px #920cff inset ;
+  }
   .show-in-print {
     display: none;
   }
   .errorColor{
-    color: orangered !important;
+    color: hotpink !important;
+    //font-weight: bold;
+    text-shadow: 2px 2px 5px #ff002c;
   }
-  .displayShow{
-    display: inline-block !important;
+  tr,th,td{
+    color: #fff;
   }
+
+
+
+
+  * ::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px #d084ff;
+    border-radius: 10px;
+    background-color: #c48af5;
+  }
+  *  ::-webkit-scrollbar {
+    width: 5px;
+    height: 5px;
+    background-color: #c48af5;
+    border-radius: 10px;
+  }
+  *  ::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    -webkit-box-shadow: inset 0 0 6px rgb(196, 138, 245);
+    background-color: #810fc7;
+  }
+  //tbody{
+  //  overflow: hidden;
+  //}
+
+
+
 }
 @media print {
   .hide-in-print{
@@ -273,6 +348,13 @@ $primary: #810fc7;
   }
   input{
     border:none !important;
+  }
+  th{
+    color: #810fc7;
+  }
+  .form-control {
+    color: #810fc7;
+    //background-color: #a445ed;
   }
 }
 </style>
