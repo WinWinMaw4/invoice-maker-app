@@ -2,10 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4823774d-fdd4-4343-a163-0ce8edccbdd1" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/deploy.sh" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Row.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Row.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/deploy.sh" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/css/app.57cfd96e.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/css/chunk-vendors.d19b9270.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/dist/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/vue.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/vue.config.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -77,6 +78,17 @@
       <workItem from="1649255740410" duration="582000" />
       <workItem from="1649311896559" duration="14205000" />
       <workItem from="1649353735196" duration="12468000" />
+      <workItem from="1649391620746" duration="3503000" />
+      <workItem from="1649399794669" duration="233000" />
+      <workItem from="1649419264270" duration="1133000" />
+      <workItem from="1649422462568" duration="275000" />
+      <workItem from="1649423496839" duration="231000" />
+      <workItem from="1649436006267" duration="1170000" />
+      <workItem from="1649438427838" duration="596000" />
+      <workItem from="1649485337837" duration="595000" />
+      <workItem from="1649488399946" duration="210000" />
+      <workItem from="1649489595121" duration="591000" />
+      <workItem from="1649493312759" duration="21000" />
     </task>
     <servers />
   </component>
